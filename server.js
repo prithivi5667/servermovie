@@ -11,10 +11,12 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var app = express();
 
 //app.set('view engine', 'ejs');
-app.use(cors({
-    origin: "https://hopeful-lovelace-8ca5c3.netlify.app", // restrict calls to those this address
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: "https://hopeful-lovelace-8ca5c3.netlify.app", // restrict calls to those this address
+//     credentials: true,
+// }));
+app.use(cors({credentials: true, origin: true}));
+app.options('*', cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
