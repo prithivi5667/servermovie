@@ -12,9 +12,7 @@ var app = express();
 
 //app.set('view engine', 'ejs');
 app.use(cors({
-    origin: "https://hopeful-lovelace-8ca5c3.netlify.app", 
-    preflightContinue: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",// restrict calls to those this address
+    origin: "http://localhost:3000", // restrict calls to those this address
     credentials: true,
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,12 +20,8 @@ app.use(bodyParser.json());
 
 app.use(session({
     secret: process.env.SECRET,
-    saveUninitialized: true,
-resave: false,
-maxAge: 1000 * 60 * 15,
-cookie:{
-    secure: true
-       }
+    resave: false,
+    saveUninitialized: false
 }));
   
 app.use(passport.initialize());
@@ -35,7 +29,7 @@ app.use(passport.session());
 
 
 //Connecting to MongoDB using mongoose
-mongoose.connect('mongodb+srv://prithivi:prithivi@cluster0.myqm7.mongodb.net/moviesdbs?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://prithivi:prithivi@cluster0.myqm7.mongodb.net/moviesdbs?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 
 //Defining Schemas
@@ -144,5 +138,5 @@ router.get('/logout', function(req, res){
 
 app.use('/api', router);
 
-app.listen(process.env.PORT || 3001);
+app.listen(3001);
 console.log("Listening to port 3001\n");
