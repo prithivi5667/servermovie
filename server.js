@@ -31,7 +31,7 @@ app.use(passport.session());
 
 
 //Connecting to MongoDB using mongoose
-mongoose.connect('mongodb://localhost:27017/MovieGoDB', {useNewUrlParser: true,useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://prithivi:prithivi@cluster0.myqm7.mongodb.net/moviesdbs?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 //Defining Schemas
