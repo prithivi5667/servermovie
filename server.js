@@ -141,5 +141,5 @@ router.get('/logout', function(req, res){
 
 app.use('/api', router);
 
-app.listen(3001);
+app.listen(process.env.PORT ||3001);
 console.log("Listening to port 3001\n");
