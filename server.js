@@ -22,8 +22,12 @@ app.use(bodyParser.json());
 
 app.use(session({
     secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false
+    saveUninitialized: true,
+resave: false,
+maxAge: 1000 * 60 * 15,
+cookie:{
+    secure: true
+       }
 }));
   
 app.use(passport.initialize());
@@ -31,7 +35,7 @@ app.use(passport.session());
 
 
 //Connecting to MongoDB using mongoose
-mongoose.connect('mongodb+srv://prithivi:prithivi@cluster0.myqm7.mongodb.net/moviesnow?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://prithivi:prithivi@cluster0.myqm7.mongodb.net/moviesdbs?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 //Defining Schemas
@@ -140,5 +144,5 @@ router.get('/logout', function(req, res){
 
 app.use('/api', router);
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 console.log("Listening to port 3001\n");
