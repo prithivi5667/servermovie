@@ -12,7 +12,7 @@ var app = express();
 
 //app.set('view engine', 'ejs');
 app.use(cors({
-    origin: "http://localhost:3000", 
+    origin: "https://hopeful-lovelace-8ca5c3.netlify.app", 
     preflightContinue: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",// restrict calls to those this address
     credentials: true,
