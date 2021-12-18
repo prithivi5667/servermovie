@@ -16,7 +16,7 @@ var app = express();
 //     credentials: true,
 // }));
 app.use(cors({credentials: true, origin: true}));
-app.options('*', cors())
+//app.options('*', cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
