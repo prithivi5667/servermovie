@@ -14,6 +14,7 @@ var app = express();
 app.use(cors({
     origin: "https://hopeful-lovelace-8ca5c3.netlify.app", // restrict calls to those this address
     credentials: true,
+    mode: "no-cors"
 }));
 //app.use(cors({credentials: true, origin: true}));
 //app.options('*', cors())
